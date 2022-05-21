@@ -1,0 +1,46 @@
+#!/usr/bin/python3
+
+import pygame
+import sys
+import logging
+
+
+class Game:
+    def __init__(self):
+        # Setup Pygame
+        pygame.init()
+        self.SCREEN = pygame.display.set_mode(
+            (640, 360),
+            flags=pygame.FULLSCREEN | pygame.SCALED
+            )
+        pygame.display.set_caption("Stella Vulpes")
+        self.CLOCK = pygame.time.Clock()
+
+    def run(self):
+        # --- GAME LOOP ---
+        while True:
+            # Event Loop
+            for event in pygame.event.get():
+                # Exit the game when clicking exit button or hitting the escape
+                if event.type == pygame.QUIT or \
+                        (event.type == pygame.KEYUP and
+                            event.key == pygame.K_ESCAPE):
+                    pygame.quit()
+                    logging.info("Program End")
+                    sys.exit()
+                # Take a screenshot when hitting the forwared slash key
+                if event.type == pygame.KEYUP and event.key == pygame.K_SLASH:
+                    pygame.image.save(self.SCREEN, "screenshot.png")
+                    logging.info("Screenshot saved as \"screenshot.png\"")
+
+            # Draw stuff on screen
+            self.SCREEN.fill("black")
+
+            # Update the display and tick forward at framerate
+            pygame.display.update()
+            self.CLOCK.tick(60)
+
+
+if __name__ == "__main__":
+    game = Game()
+    game.run()
