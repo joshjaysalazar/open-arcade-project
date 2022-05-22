@@ -3,6 +3,7 @@
 import pygame
 import sys
 import logging
+from src.level import Level
 
 
 class Game:
@@ -11,10 +12,13 @@ class Game:
         pygame.init()
         self.SCREEN = pygame.display.set_mode(
             (640, 360),
-            flags=pygame.FULLSCREEN | pygame.SCALED
+            flags=pygame.FULLSCREEN | pygame.SCALED,
+            vsync=True
             )
         pygame.display.set_caption("Stella Vulpes")
         self.CLOCK = pygame.time.Clock()
+
+        self.level = Level()
 
     def run(self):
         # --- GAME LOOP ---
@@ -35,6 +39,7 @@ class Game:
 
             # Draw stuff on screen
             self.SCREEN.fill("black")
+            self.level.run()
 
             # Update the display and tick forward at framerate
             pygame.display.update()
@@ -42,5 +47,18 @@ class Game:
 
 
 if __name__ == "__main__":
-    game = Game()
-    game.run()
+    # Set up debug logging
+    log_format = "%(asctime)s (%(module)s.py) [%(levelname)s] %(message)s"
+    logging.basicConfig(
+        filename="debug.log",
+        filemode="w",
+        format=log_format,
+        level=logging.DEBUG
+        )
+    logging.info("Program Start")
+
+    try:
+        game = Game()
+        game.run()
+    except Exception:
+        logging.exception("Fatal error in main loop")
