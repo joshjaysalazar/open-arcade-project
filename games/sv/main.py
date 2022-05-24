@@ -12,8 +12,7 @@ class Game:
         pygame.init()
         self.SCREEN = pygame.display.set_mode(
             (640, 360),
-            flags=pygame.FULLSCREEN | pygame.SCALED,
-            vsync=True
+            flags=pygame.FULLSCREEN | pygame.SCALED
             )
         pygame.display.set_caption("Stella Vulpes")
         self.CLOCK = pygame.time.Clock()
