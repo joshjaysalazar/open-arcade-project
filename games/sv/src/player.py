@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
 
         # Set up variables
         self.direction = pygame.math.Vector2()
-        self.speed = 5
+        self.speed = 4
         self.cooldown_time = 15
         self.cooldown_counter = 0
 
