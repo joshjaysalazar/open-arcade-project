@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Getting Started"
+tags:   updates screenshots
 ---
 
 # Getting Started
