@@ -4,6 +4,7 @@ import pygame
 import sys
 import logging
 from src.level import Level
+from src.core import constants
 
 
 class Game:
@@ -11,7 +12,7 @@ class Game:
         # Setup Pygame
         pygame.init()
         self.SCREEN = pygame.display.set_mode(
-            (640, 360),
+            (constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT),
             flags=pygame.FULLSCREEN | pygame.SCALED
             )
         pygame.display.set_caption("Stella Vulpes")
