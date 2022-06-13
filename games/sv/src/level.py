@@ -3,6 +3,7 @@ import random
 from src.player import Player
 from src.enemies import Enemy
 from src.core import constants
+from src.core import debug
 
 
 class Level:
@@ -50,3 +51,5 @@ class Level:
 
         self.player_bullet_sprites.update()
         self.player_bullet_sprites.draw(self.display_surface)
+
+        debug.output("Hi mom!")
