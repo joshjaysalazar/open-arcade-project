@@ -1,6 +1,5 @@
 import pygame
 
-from src import bullets
 from src.core import constants
 
 
@@ -30,13 +29,6 @@ class Enemy(pygame.sprite.Sprite):
             self.direction = self.direction.normalize()
 
             self.rect.center += self.direction * self.speed
-
-    # def fire(self):
-    #     if self.cooldown_counter <= 0:
-    #         bullets.PlayerBullet(self, self.rect.midtop, [self.bullet_group])
-    #
-    #         # Set cooldown counter
-    #         self.cooldown_counter = self.cooldown_time
 
     def update(self):
         # Tick down the cooldown counter
