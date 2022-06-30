@@ -16,6 +16,7 @@ class Game:
             flags=pygame.FULLSCREEN | pygame.SCALED
             )
         pygame.display.set_caption("Stella Vulpes")
+        pygame.mouse.set_visible(False)
         self.CLOCK = pygame.time.Clock()
 
         self.level = Level()
