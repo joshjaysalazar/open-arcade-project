@@ -54,3 +54,7 @@ class Level:
         self.player_bullet_sprites.draw(self.display_surface)
 
         debug.output(f"Enemy sprite count: {len(self.enemy_sprites)}")
+        debug.output(
+            f"Bullet sprite count: {len(self.player_bullet_sprites)}",
+            y=20
+            )
