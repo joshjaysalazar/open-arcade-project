@@ -53,4 +53,4 @@ class Level:
         self.player_bullet_sprites.update()
         self.player_bullet_sprites.draw(self.display_surface)
 
-        debug.output("Hi mom!")
+        debug.output(f"Enemy sprite count: {len(self.enemy_sprites)}")
