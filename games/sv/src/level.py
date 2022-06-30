@@ -34,7 +34,8 @@ class Level:
             Enemy(
                 (x_pos, -20),
                 [self.enemy_sprites],
-                self.enemy_bullet_sprites
+                self.enemy_bullet_sprites,
+                self.player_bullet_sprites
                 )
 
     def run(self):

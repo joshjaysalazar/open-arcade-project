@@ -4,11 +4,12 @@ from src.core import constants
 
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, pos, groups, bullet_group):
+    def __init__(self, pos, groups, enemy_bullets, player_bullets):
         super().__init__(groups)
 
         # Expose sprite groups to class
-        self.bullet_group = bullet_group
+        self.enemy_bullets = enemy_bullets
+        self.player_bullets = player_bullets
 
         # Load the enemy image
         self.image = pygame.image.load(
@@ -30,6 +31,15 @@ class Enemy(pygame.sprite.Sprite):
 
             self.rect.center += self.direction * self.speed
 
+    def check_collisions(self):
+        other_sprite = pygame.sprite.spritecollideany(
+            self,
+            self.player_bullets
+            )
+        if other_sprite is not None:
+            other_sprite.kill()
+            self.kill()
+
     def update(self):
         # Tick down the cooldown counter
         if self.cooldown_counter > 0:
@@ -38,3 +48,4 @@ class Enemy(pygame.sprite.Sprite):
             self.cooldown_counter = 0
 
         self.move()
+        self.check_collisions()
