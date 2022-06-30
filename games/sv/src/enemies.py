@@ -40,6 +40,10 @@ class Enemy(pygame.sprite.Sprite):
             other_sprite.kill()
             self.kill()
 
+    def check_off_screen(self):
+        if self.rect.top >= constants.SCREEN_HEIGHT:
+            self.kill()
+
     def update(self):
         # Tick down the cooldown counter
         if self.cooldown_counter > 0:
@@ -49,3 +53,4 @@ class Enemy(pygame.sprite.Sprite):
 
         self.move()
         self.check_collisions()
+        self.check_off_screen()
